@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --exit 'test/**'",
-    "server": "nodemon index.js",
+    "start": "nodemon index.js",
     "dev": "npm run server"
   },
   "repository": {

@@ -1,7 +1,7 @@
 let express = require('express');
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
-let winston = require('./api/config/winston.js');
+let winston = require('./logs/winston.js');
 require('dotenv').config()
 app = express();
 // Invitation = require('./api/models/invitation')
@@ -11,5 +11,11 @@ let port = process.env.PORT;
 let db = process.env.DB;
 let host = process.env.HOST;
 
-winston.info('Starting app...')
 
+
+app.listen(port)
+
+
+winston.info(`Starting app on port ${port}...`);
+
+module.exports = app
