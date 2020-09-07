@@ -30,10 +30,11 @@ db.on('connected', () => {winston.info('Mongoose default connection to ' +  mong
 db.on('error', () => {winston.error(console)});
 db.on('disconnected', () => {winston.info('Mongoose disconnected')});
 
-// if doind a test, disable morgan
+// if doing a test, disable morgan
 if (process.env.NODE_ENV !== 'test') {
     app.use(morgan('combined', { stream: winston.stream }))
 }
+
 
 // look for raw text
 app.use(bodyParser.json());                                     
@@ -41,8 +42,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());                                    
 app.use(bodyParser.json({ type: 'application/json'}));  
 
-// var routesV1 = require('./routesV1/routes');
-// app.use('/api/v1/', routesV1)
+let routesV1 = require('./routesV1/routes');
+app.use('/api/v1', routesV1)
+
+app.get('*', (req, res) => {
+    res.send('found');
+})
 
 app.listen(port)
 
