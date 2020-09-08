@@ -1,4 +1,8 @@
 let winston = require('../logs/winston');
+// const { util } = require('chai');
+let utils = require('./utilsController');
+
+
 
 winston.debug('in userController');
 
@@ -24,7 +28,7 @@ exports.signInUser = async (req, res) => {
         res.status(401).send(responseData);
     } else {
         let responseData = {
-            'token': "string",
+            'token': utils.createWebToken({'username':req.body.username}),
             'users': []
         }
         res.status(200).send(responseData)
