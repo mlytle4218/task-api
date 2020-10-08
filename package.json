@@ -4,7 +4,7 @@
   "description": "Backend for Task app",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --exit 'test/**'",
+    "test": "mocha --exit --recursive 'test/*.js'",
     "start": "nodemon index.js",
     "dev": "npm run server"
   },
